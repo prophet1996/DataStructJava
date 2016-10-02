@@ -13,6 +13,7 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
 
     public MyArrayList() {
         doClear();
+
     }
 
     public void clear() {
@@ -70,11 +71,11 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
     public void add(int idx, AnyType x) {
         if (theItems.length == size())
             ensureCapacity(size() * 2 + 1);
-        for (int i = theSize; i > idx; i--) {
+        for (int i = theSize; i > idx; i--)
             theItems[i] = theItems[i - 1];
             theItems[idx] = x;
             theSize++;
-        }
+
 
     }
 
@@ -91,26 +92,29 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
     public Iterator<AnyType> iterator() {
         return new ArrayListIterator(this);
     }
+
     class ArrayListIterator<AnyType> implements Iterator<AnyType> {
-        private int current=0;
-        private  MyArrayList<AnyType> list;
+        private int current = 0;
+        private MyArrayList<AnyType> list;
 
         public ArrayListIterator(MyArrayList<AnyType> list) {
-        this.list=list;
+            this.list = list;
         }
 
         @Override
         public boolean hasNext() {
-            return current<size() ;
+            return current < size();
         }
 
         @Override
         public AnyType next() {
-            if(!hasNext())
+            if (!hasNext())
                 throw new java.util.NoSuchElementException();
             return (AnyType) theItems[current++];
         }
-        public void remove( )
-        { MyArrayList.this.remove( --current ); }
+
+        public void remove() {
+            MyArrayList.this.remove(--current);
+        }
     }
 }

@@ -12,18 +12,25 @@ public class ListADT {
         int[] a=aList.makeList(4);
         */
 
-        ArrayList<Integer> li = new ArrayList<Integer>();
+      /*  ArrayList<Integer> li = new ArrayList<Integer>();
         li.add(2);
         li.add(11);
-        li.add(12);
-        li.add(7);
-        li.add(6);
-        li.add(5);
-        li.add(4);
         li.add(3);
         li.add(90);
         ListADT.removeEven(li);
         Iterator<Integer> it=li.listIterator();
+        while(it.hasNext()){
+            System.out.println(it.next());
+        }*/
+
+        MyArrayList<Integer> mal= new MyArrayList<Integer>();
+        mal.add(5);
+        mal.add(6);
+        mal.add(3);
+        mal.add(3);
+        boolean b=mal.add(4);
+
+        MyArrayList.ArrayListIterator it=(MyArrayList.ArrayListIterator) mal.iterator();
         while(it.hasNext()){
             System.out.println(it.next());
         }
